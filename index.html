@@ -1,1 +1,912 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags Básicas e SEO -->
+    <title>Foresight Estratégico em Saúde | Inovação como Infraestrutura</title>
+    <meta name="description" content="Radar executivo de tendências em saúde 2026-2030: Inteligência Artificial, Terapias Avançadas, Governança de Dados e Resiliência Sanitária.">
+    <meta name="author" content="Foresight Estratégico & Design de Futuros">
+    <meta name="robots" content="index, follow">
 
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Foresight Estratégico em Saúde 2030">
+    <meta property="og:description" content="Análise profunda sobre IA, Terapias de RNA, ADCs e Interoperabilidade no cenário global e SUS.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Foresight Estratégico em Saúde 2030">
+    <meta name="twitter:description" content="Radar executivo de tendências: A inovação virou a infraestrutura estratégica do setor.">
+
+    <!-- Favicon Inline (SVG) para evitar erros 404 em hospedagens estáticas -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>">
+
+    <!-- Bibliotecas Externas (Via CDN Estável) -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Configuração de Estilos e Animações -->
+    <style>
+        :root {
+            --brand-dark: #111827;
+            --brand-accent: #2563eb;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: var(--brand-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        
+        /* Proteção Anti-Tela Branca: A opacidade só é 0 se o JS for ativado */
+        .fade-in {
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .js-loaded .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .js-loaded .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+        }
+        .tag-pill:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Header & Leitura Executiva -->
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 border-b border-gray-200">
+        
+        <!-- Topo do Cabeçalho: Tags à esquerda e Logo à direita -->
+        <div class="flex justify-between items-start mb-6 gap-4">
+            <div class="flex flex-wrap items-center gap-3 text-purple-700 font-bold tracking-widest text-sm uppercase">
+                <i class="ph ph-trend-up text-xl"></i>
+                <span>Radar Executivo de Foresight | 2026-2030</span>
+                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Atualização Completa</span>
+            </div>
+            
+            <!-- Logo GTIDET -->
+            <img src="https://i.postimg.cc/L6vCnk9g/gtidet.png" alt="Logo GTIDET" class="h-8 md:h-12 object-contain shrink-0 mix-blend-multiply">
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight">
+            A Inovação como <br class="hidden md:block" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">Infraestrutura Estratégica</span>
+        </h1>
+        
+        <!-- Leitura Executiva -->
+        <div class="bg-gray-50 p-6 md:p-8 rounded-2xl border-l-4 border-purple-600 mt-8 shadow-sm">
+            <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><i class="ph-fill ph-book-open-text text-purple-600"></i> Leitura Executiva</h3>
+            <p class="text-gray-700 text-base leading-relaxed mb-4">
+                O setor de saúde entrou numa fase em que a inovação deixou de ser “tecnologia bonita” e virou a base estrutural. As tendências de maior peso hoje não são isoladas, elas operam em rede: <strong>IA embutida no fluxo clínico</strong>, cuidado conectado (hospital-to-home), <strong>governança de dados</strong>, medicina multimodal e o salto das <strong>terapias avançadas (mRNA, ADCs)</strong>.
+            </p>
+            <p class="text-gray-700 text-sm leading-relaxed">
+                <em>Isso aparece simultaneamente nos movimentos de mercado, na maturação regulatória da FDA, nas carteiras de P&D (como as da Pfizer) e na nova arquitetura de resiliência sanitária do SUS e da Fiocruz.</em>
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20 md:space-y-24">
+
+        <!-- BLOCO DE DESTAQUE: MAPEAMENTO DE PROTAGONISTAS -->
+        <section class="fade-in bg-gray-900 rounded-3xl p-6 md:p-12 shadow-2xl relative overflow-hidden mt-2">
+            <!-- Glow effect de fundo -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-600/20 blur-[100px]"></div>
+                <div class="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-emerald-600/20 blur-[100px]"></div>
+                <div class="absolute -bottom-[20%] left-[20%] w-[50%] h-[50%] rounded-full bg-purple-600/20 blur-[100px]"></div>
+            </div>
+
+            <div class="relative z-10">
+                <div class="mb-10 text-center max-w-4xl mx-auto">
+                    <span class="text-blue-400 font-bold tracking-widest text-sm uppercase mb-2 block">Ecossistema de Inovação</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Mapeamento de Protagonistas</h2>
+                    <p class="text-gray-300 text-base leading-relaxed">As instituições e big techs que estão definindo a agenda global de pesquisa, desenvolvimento e validação tecnológica: do supercomputador no Vale do Silício à soberania clínica do SUS.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Protagonista 1: Cleveland Clinic -->
+                    <div class="bg-gray-800/80 backdrop-blur-md border border-blue-500/30 p-8 rounded-2xl flex flex-col hover:border-blue-400 transition-colors">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-blue-500/20 text-blue-400 rounded-xl"><i class="ph-fill ph-pulse text-3xl"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Cleveland Clinic</h3>
+                                <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">IA e Medicina Clínica</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-grow">
+                            <p class="text-sm text-gray-300 leading-relaxed border-l-2 border-blue-500 pl-3"><strong>Core:</strong> Integração massiva da IA como camada operacional direta no hospital e a transição para a medicina preditiva multimodal.</p>
+                            <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                                <h4 class="text-sm font-bold text-white mb-2"><i class="ph ph-rocket-launch text-blue-400 mr-2"></i>Destaques:</h4>
+                                <ul class="text-xs text-gray-400 space-y-2 list-disc pl-4">
+                                    <li><strong>Ambient Listening:</strong> IA que transcreve e automatiza prontuários em tempo real (reduzindo o burnout médico).</li>
+                                    <li><strong>Descoberta Quântica:</strong> Parceria com a IBM Quantum para simular novas moléculas em dias, não em anos.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protagonista 2: Fraunhofer Institute -->
+                    <div class="bg-gray-800/80 backdrop-blur-md border border-emerald-500/30 p-8 rounded-2xl flex flex-col hover:border-emerald-400 transition-colors">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-emerald-500/20 text-emerald-400 rounded-xl"><i class="ph-fill ph-cpu text-3xl"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Fraunhofer Inst.</h3>
+                                <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Engenharia e Validação</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-grow">
+                            <p class="text-sm text-gray-300 leading-relaxed border-l-2 border-emerald-500 pl-3"><strong>Core:</strong> O gargalo não é inventar, é validar. Foco em provar a segurança e certificar o "hardware" e algoritmos do futuro (TRL 6 a 8).</p>
+                            <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                                <h4 class="text-sm font-bold text-white mb-2"><i class="ph ph-rocket-launch text-emerald-400 mr-2"></i>Destaques:</h4>
+                                <ul class="text-xs text-gray-400 space-y-2 list-disc pl-4">
+                                    <li><strong>TEF-Health:</strong> Mega-plataforma de certificação rápida para robôs cirúrgicos em ambientes hospitalares do mundo real.</li>
+                                    <li><strong>Organ-on-a-chip:</strong> Microdispositivos vivos que simulam órgãos para testar toxicidade de remédios.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protagonista 3: Fiocruz & Dalcolmo -->
+                    <div class="bg-gray-800/80 backdrop-blur-md border border-green-500/30 p-8 rounded-2xl flex flex-col hover:border-green-400 transition-colors">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-green-500/20 text-green-400 rounded-xl"><i class="ph-fill ph-shield-check text-3xl"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Fiocruz / Dalcolmo</h3>
+                                <span class="text-xs text-green-400 font-bold uppercase tracking-wider">Soberania e Resiliência</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-grow">
+                            <p class="text-sm text-gray-300 leading-relaxed border-l-2 border-green-500 pl-3"><strong>Core:</strong> Preparação estrutural para a "Doença X" e erradicação da dependência externa de insumos biológicos para o SUS.</p>
+                            <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                                <h4 class="text-sm font-bold text-white mb-2"><i class="ph ph-rocket-launch text-green-400 mr-2"></i>Destaques:</h4>
+                                <ul class="text-xs text-gray-400 space-y-2 list-disc pl-4">
+                                    <li><strong>Hub de mRNA (OMS):</strong> Bio-Manguinhos estruturado para produzir vacinas de RNA massivamente no Sul Global.</li>
+                                    <li><strong>Vigilância Genômica:</strong> Rastreamento em tempo real de patógenos tropicais e ameaças climáticas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protagonista 4: Google DeepMind -->
+                    <div class="bg-gray-800/80 backdrop-blur-md border border-purple-500/30 p-8 rounded-2xl flex flex-col hover:border-purple-400 transition-colors">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-purple-500/20 text-purple-400 rounded-xl"><i class="ph-fill ph-network text-3xl"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Google DeepMind</h3>
+                                <span class="text-xs text-purple-400 font-bold uppercase tracking-wider">GenAI e Biologia Digital</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-grow">
+                            <p class="text-sm text-gray-300 leading-relaxed border-l-2 border-purple-500 pl-3"><strong>Core:</strong> Desvendar a biologia computacionalmente. Reduzir a descoberta de novos fármacos de uma década para alguns meses utilizando redes neurais avançadas.</p>
+                            <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                                <h4 class="text-sm font-bold text-white mb-2"><i class="ph ph-rocket-launch text-purple-400 mr-2"></i>Destaques:</h4>
+                                <ul class="text-xs text-gray-400 space-y-2 list-disc pl-4">
+                                    <li><strong>AlphaFold 3:</strong> Algoritmo vencedor do Nobel capaz de prever as interações de todas as moléculas da vida com precisão atômica.</li>
+                                    <li><strong>Isomorphic Labs:</strong> Spin-off do Google focada 100% no design de fármacos impulsionado por IA.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protagonista 5: NVIDIA Healthcare -->
+                    <div class="bg-gray-800/80 backdrop-blur-md border border-teal-500/30 p-8 rounded-2xl flex flex-col hover:border-teal-400 transition-colors">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-teal-500/20 text-teal-400 rounded-xl"><i class="ph-fill ph-microchip text-3xl"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">NVIDIA Healthcare</h3>
+                                <span class="text-xs text-teal-400 font-bold uppercase tracking-wider">Supercomputação em Saúde</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-grow">
+                            <p class="text-sm text-gray-300 leading-relaxed border-l-2 border-teal-500 pl-3"><strong>Core:</strong> Fornecer a infraestrutura indispensável (Hardware e LLMs médicos) para o processamento de sequenciamento genético e Gêmeos Digitais em tempo real.</p>
+                            <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                                <h4 class="text-sm font-bold text-white mb-2"><i class="ph ph-rocket-launch text-teal-400 mr-2"></i>Destaques:</h4>
+                                <ul class="text-xs text-gray-400 space-y-2 list-disc pl-4">
+                                    <li><strong>BioNeMo:</strong> Plataforma de modelos fundacionais genativos para biologia estrutural e química computacional.</li>
+                                    <li><strong>NVIDIA Clara:</strong> Ecossistema acelerado por GPU para análise de imagens médicas genômicas aceleradas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protagonista 6: Intuitive Surgical -->
+                    <div class="bg-gray-800/80 backdrop-blur-md border border-rose-500/30 p-8 rounded-2xl flex flex-col hover:border-rose-400 transition-colors">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-rose-500/20 text-rose-400 rounded-xl"><i class="ph-fill ph-robot text-3xl"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Intuitive Surgical</h3>
+                                <span class="text-xs text-rose-400 font-bold uppercase tracking-wider">Robótica Cirúrgica Baseada em Dados</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-grow">
+                            <p class="text-sm text-gray-300 leading-relaxed border-l-2 border-rose-500 pl-3"><strong>Core:</strong> O robô deixou de ser apenas mecânico para atuar como um computador sensível e analítico que coleta milhares de dados intraoperatórios.</p>
+                            <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                                <h4 class="text-sm font-bold text-white mb-2"><i class="ph ph-rocket-launch text-rose-400 mr-2"></i>Destaques:</h4>
+                                <ul class="text-xs text-gray-400 space-y-2 list-disc pl-4">
+                                    <li><strong>Da Vinci 5:</strong> Sistema cirúrgico de 5ª geração com Feedback de Força (Force Feedback) para os dedos do cirurgião.</li>
+                                    <li><strong>Poder Computacional:</strong> O robô processa inteligência artificial e captação de dados corporais em tempo real.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCO 1: IA Operacional & Cuidado Contínuo -->
+        <section class="fade-in">
+            <div class="mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3 flex items-center gap-3">
+                    <i class="ph ph-cpu text-blue-600"></i> 1. O Novo Chassi Operacional: IA & Descentralização
+                </h2>
+                <!-- Introdução -->
+                <div class="text-sm text-gray-700 bg-blue-50 p-5 rounded-xl border border-blue-200 max-w-4xl shadow-sm mt-4">
+                    <strong class="text-blue-900 flex items-center gap-2 mb-2"><i class="ph-fill ph-lightbulb text-lg text-blue-600"></i> Introdução</strong>
+                    A Inteligência Artificial deixou de ser um "projeto futurista" e tornou-se a engrenagem invisível dos hospitais. Em vez de substituir o médico, ela atua nos bastidores (transcrevendo consultas, organizando faturamentos) para que ele foque exclusivamente no paciente. Simultaneamente, equipamentos portáteis (wearables) levam o monitoramento avançado para a casa do paciente, transformando o hospital em uma central de inteligência e casos graves, não mais de internação básica.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- IA Operacional -->
+                <div class="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-xl font-bold pr-4">A IA Saiu do Laboratório</h3>
+                            <span class="tag-pill bg-blue-100 text-blue-800 shrink-0">Operational AI</span>
+                        </div>
+                        <ul class="space-y-4 text-gray-700 text-sm">
+                            <li class="flex items-start gap-3">
+                                <i class="ph-fill ph-check-circle text-blue-500 mt-1 shrink-0"></i>
+                                <div>
+                                    <strong class="text-gray-900 block">Ambient Listening (Cleveland Clinic)</strong>
+                                    <span>Implantação em escala nas práticas ambulatoriais, automatizando a documentação e codificação clínica.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="ph-fill ph-check-circle text-blue-500 mt-1 shrink-0"></i>
+                                <div>
+                                    <strong class="text-gray-900 block">Maturação Regulatória (FDA)</strong>
+                                    <span>A FDA autoriza publicamente dispositivos médicos com IA, discutindo regulamentação nativa para <em>Foundation Models (LLMs)</em> na saúde.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <p class="text-xs text-gray-700 mb-3 leading-relaxed"><strong>Nota Didática:</strong> <em>Ambient Listening</em> utiliza microfones e IA para ouvir, transcrever e estruturar automaticamente a consulta médica no prontuário, reduzindo drasticamente a carga burocrática e o <em>burnout</em> médico.</p>
+                        <div class="flex flex-col gap-1.5">
+                            <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-blue-600"></i> <strong>Fontes:</strong> Relatórios McKinsey & Diretrizes de Inovação da FDA.</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-calendar-blank shrink-0 text-blue-600"></i> <strong>Período Base:</strong> Publicações e dados de mercado projetados para 2025-2026.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuidado Contínuo -->
+                <div class="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-xl font-bold pr-4">Do Hospital à Rede Contínua</h3>
+                            <span class="tag-pill bg-teal-100 text-teal-800 shrink-0">Care Continuum</span>
+                        </div>
+                        <ul class="space-y-4 text-gray-700 text-sm">
+                            <li class="flex items-start gap-3">
+                                <i class="ph-fill ph-check-circle text-teal-500 mt-1 shrink-0"></i>
+                                <div>
+                                    <strong class="text-gray-900 block">RPM (Remote Patient Monitoring)</strong>
+                                    <span>Wearables com IA + IoT Médico para monitoramento preditivo e intervenção precoce em doentes crônicos e idosos.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="ph-fill ph-check-circle text-teal-500 mt-1 shrink-0"></i>
+                                <div>
+                                    <strong class="text-gray-900 block">Longitudinalidade & Digital Twins</strong>
+                                    <span>Modelagem digital do paciente conectada ao prontuário para prever a deterioração clínica antes do agravamento (Fraunhofer).</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <p class="text-xs text-gray-700 mb-3 leading-relaxed"><strong>Legenda Explicativa:</strong> <em>Digital Twins</em> (Gêmeos Digitais) são simulações computacionais complexas de órgãos ou da fisiologia do paciente, permitindo testar o impacto de tratamentos "in-silico" antes de aplicá-los no mundo real.</p>
+                        <div class="flex flex-col gap-1.5">
+                            <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-teal-600"></i> <strong>Fontes:</strong> Revisão Científica Frontiers & Projetos do Fraunhofer Institute.</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-calendar-blank shrink-0 text-teal-600"></i> <strong>Período Base:</strong> Pesquisas e consolidação de tendências entre 2024 e 2026.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCO 2: Governança, Interoperabilidade e Multimodalidade -->
+        <section class="fade-in bg-gray-50 rounded-3xl p-6 md:p-8 border border-gray-200">
+            <div class="mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3 flex items-center gap-3">
+                    <i class="ph ph-database text-purple-600"></i> 2. Governança e Medicina Multimodal
+                </h2>
+                <!-- Introdução -->
+                <div class="text-sm text-gray-700 bg-purple-100/50 p-5 rounded-xl border border-purple-200 max-w-4xl shadow-sm mt-4">
+                    <strong class="text-purple-900 flex items-center gap-2 mb-2"><i class="ph-fill ph-lightbulb text-lg text-purple-600"></i> Introdução</strong>
+                    Pense nos dados de saúde como peças de um quebra-cabeça espalhadas por vários laboratórios e clínicas. A "Interoperabilidade" é a capacidade de conectar o exame de sangue, a ressonância e o histórico genético em um prontuário unificado (Multimodalidade). Sem essa organização segura e ética (Governança e Data Spaces), a Inteligência Artificial não tem como trabalhar com precisão para prever ou tratar doenças.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Dados Interoperáveis -->
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col">
+                        <h4 class="font-bold text-lg mb-3 flex items-center gap-2"><i class="ph-fill ph-plugs-connected text-purple-500"></i> O Padrão Ouro de Dados</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">
+                            A pauta global (GI-AI4H) gira em torno de ética, regulação, e operação conjunta. Vencedores não apenas criam algoritmos, mas fazem o algoritmo circular com segurança e explicabilidade (ex: <em>European Health Dataspace</em> da Fraunhofer).
+                        </p>
+                        <div class="bg-purple-50 p-4 rounded-xl border border-purple-100 mt-auto">
+                            <h5 class="text-sm font-bold text-purple-900 mb-1">Cenário Brasil: Rede de Saúde Digital (Fiocruz)</h5>
+                            <p class="text-xs text-purple-800">
+                                5 Eixos: Desenvolvimento tecnológico, vigilância em saúde, atenção ao SUS, informação e direitos humanos.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100 space-y-2">
+                            <p class="text-xs text-gray-700 leading-relaxed"><strong>Nota:</strong> <em>GI-AI4H</em> (Global Initiative on AI for Health) é a iniciativa liderada pela OMS (WHO) e UIT para padronizar e regulamentar a avaliação de Inteligência Artificial na saúde globalmente.</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-purple-600"></i> <strong>Fontes:</strong> WHO, GI-AI4H, Edital Saúde Digital Fiocruz.</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-calendar-blank shrink-0 text-purple-600"></i> <strong>Período:</strong> Estratégia global WHO projetada para o ciclo 2020–2027.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4Ds Multimodalidade -->
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col">
+                        <h4 class="font-bold text-lg mb-3 flex items-center gap-2"><i class="ph-fill ph-intersect text-purple-500"></i> Os "4Ds" e a Precisão Multimodal</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-3">
+                            A precisão deixou de ser puramente genética. A fronteira atual cruza <strong>Omics + Prontuário Eletrônico (EHR) + Imagens + Dados Fisiológicos</strong>.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-3 list-disc pl-5 flex-grow">
+                            <li><strong>Fraunhofer (Os 4Ds):</strong> Drugs, Diagnostics, Devices e Data operando de forma síncrona.</li>
+                            <li><strong>Radiologia Multimodal:</strong> Plataformas de estratificação terapêutica predizendo risco cardiovascular cruzando imagem e genômica (Cleveland Clinic).</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-gray-100 space-y-2">
+                            <p class="text-xs text-gray-700 leading-relaxed"><strong>Legenda:</strong> <em>"Omics"</em> é um sufixo que engloba campos de estudo biológicos em larga escala (holísticos), como a genômica (genes), proteômica (proteínas) e metabolômica celular.</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-purple-600"></i> <strong>Fontes:</strong> Periódico npj Digital Medicine, Fraunhofer R&D, Cleveland Clinic.</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-calendar-blank shrink-0 text-purple-600"></i> <strong>Período:</strong> Aplicações validadas clinicamente de 2024 a 2026.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCO 3: Cruzamento de Dados e Patentes (Terapias) -->
+        <section class="fade-in">
+            <div class="mb-10 text-center max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">3. O Topo da Agenda de P&D: Terapias</h2>
+                
+                <!-- Introdução -->
+                <div class="text-sm text-gray-700 bg-rose-50 p-5 rounded-xl border border-rose-200 shadow-sm mx-4 md:mx-0 mt-6 text-left">
+                    <strong class="text-rose-900 flex items-center gap-2 mb-2"><i class="ph-fill ph-lightbulb text-lg text-rose-600"></i> Introdução</strong>
+                    A indústria farmacêutica está mudando de paradigma. Em vez de criar um "remédio químico único" para milhões de pessoas, os bilhões em investimentos e patentes estão direcionados a plataformas biológicas avançadas. Os destaques são as terapias de RNA (que ensinam o corpo a produzir sua própria cura) e os ADCs, que funcionam como "mísseis teleguiados", entregando quimioterapia exclusivamente dentro da célula cancerígena e poupando o restante do corpo do paciente.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm">
+                <!-- Coluna 1: Pfizer & Pipeline -->
+                <div class="space-y-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 border-b pb-3 mb-4">
+                            <i class="ph-fill ph-flask text-rose-600 text-3xl"></i>
+                            <h4 class="font-bold text-xl text-gray-900">O Movimento Farmacêutico (Pfizer)</h4>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            A Pfizer reorganizou radicalmente seu motor de inovação focando em Oncologia, Medicina Interna, Vacinas e Imunologia. No ASCO 2025, o grande destaque foi a estratégia de <strong>ADCs (Antibody-drug conjugates)</strong> combinados com imunoterapia.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mt-6">
+                            <div class="bg-rose-50 p-4 rounded-xl text-center border border-rose-100">
+                                <span class="block text-3xl font-bold text-rose-600 mb-1">102</span>
+                                <span class="text-xs text-gray-600 font-semibold uppercase">Projetos P&D (2026)</span>
+                            </div>
+                            <div class="bg-rose-50 p-4 rounded-xl text-center border border-rose-100">
+                                <span class="block text-3xl font-bold text-rose-600 mb-1">Top 1</span>
+                                <span class="text-xs text-gray-600 font-semibold uppercase">Oncologia e Raras</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-100 space-y-2">
+                        <p class="text-xs text-gray-700 leading-relaxed"><strong>Nota Explicativa (ADCs):</strong> <em>Antibody-Drug Conjugates</em> são "mísseis biológicos guiados". Combinam um anticorpo (que acha a célula tumoral) com uma carga altamente tóxica, destruindo o câncer e poupando tecidos saudáveis.</p>
+                        <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-rose-600"></i> <strong>Fontes:</strong> Relatório Pfizer / WIPO / EPO.</p>
+                        <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="ph ph-calendar-blank shrink-0 text-rose-600"></i> <strong>Período Base:</strong> Diretrizes de portfólio corporativo (ASCO 2025/2026).</p>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Gráfico de Terapias (ASGCT) -->
+                <div class="w-full flex flex-col justify-center items-center h-full pt-8 lg:pt-0 border-t lg:border-t-0 lg:border-l border-gray-100 lg:pl-8">
+                    <h4 class="text-sm font-bold text-gray-500 uppercase mb-4 text-center">Ensaios Clínicos Globais (Terapias Avançadas)</h4>
+                    <div class="relative w-full max-w-[300px] aspect-square">
+                        <canvas id="therapiesChart"></canvas>
+                    </div>
+                    <div class="mt-6 text-center space-y-2 w-full">
+                        <p class="text-xs text-gray-700 leading-relaxed mb-3"><strong>Legenda Estratégica:</strong> CGT (Cell and Gene Therapy) e RNA englobam terapias que não apenas tratam sintomas, mas modificam a expressão genética ou celular para curar a raiz da doença de forma definitiva.</p>
+                        <p class="text-xs text-gray-500 flex items-center justify-center gap-1.5"><i class="ph ph-book-open shrink-0 text-gray-400"></i> <strong>Fonte:</strong> Relatório ASGCT/Citeline.</p>
+                        <p class="text-xs text-gray-500 flex items-center justify-center gap-1.5"><i class="ph ph-calendar-blank shrink-0 text-gray-400"></i> <strong>Período:</strong> Acumulado consolidado (Q3 2025 - Q1 2026).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCO 4: Robótica, Validação TRL e EV/RADAR -->
+        <section class="fade-in bg-slate-900 rounded-3xl p-6 md:p-12 shadow-xl text-white relative overflow-hidden">
+            <!-- Fundo decorativo simulação Radar -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none flex items-center justify-center overflow-hidden">
+                <div class="w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full border border-slate-400 animate-[spin_60s_linear_infinite] flex items-center justify-center">
+                    <div class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full border border-slate-500 flex items-center justify-center">
+                        <div class="w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-full border border-slate-600"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative z-10">
+                <div class="mb-10 text-center max-w-4xl mx-auto">
+                    <span class="text-emerald-400 font-bold tracking-widest text-sm uppercase mb-2 block">Deep Tech, Automação & Convergência</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-3 flex items-center justify-center gap-3">
+                        <i class="ph ph-robot text-emerald-400"></i> Robótica, Gêmeos Digitais e Microrrobôs
+                    </h2>
+                    
+                    <!-- Introdução -->
+                    <div class="text-sm text-slate-200 bg-slate-800/80 backdrop-blur-sm p-5 rounded-xl border border-emerald-500/30 text-left mb-6 mt-6 shadow-lg">
+                        <strong class="text-emerald-400 flex items-center gap-2 mb-2"><i class="ph-fill ph-lightbulb text-lg text-emerald-400"></i> Introdução</strong>
+                        A "Deep Tech" na saúde leva a engenharia ao extremo. Estamos passando da cirurgia robótica tradicional (braços mecânicos gigantes) para <strong>microrrobôs invisíveis a olho nu</strong> que navegam pelas veias. Simultaneamente, antes de qualquer intervenção, criamos <strong>Gêmeos Digitais</strong> (cópias virtuais hiper-realistas do paciente ou do órgão) para testar cirurgias e remédios no computador (in-silico) antes de tocar no corpo físico humano.
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Microrrobótica -->
+                    <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl hover:border-emerald-500 transition-all border-t-4 border-t-emerald-500">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-emerald-500/20 rounded-lg text-emerald-400"><i class="ph-fill ph-virus text-2xl"></i></div>
+                            <h4 class="font-bold text-lg leading-tight">Microcirurgias e <br> Microrrobôs</h4>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">Desenvolvimento de microrrobôs guiados magneticamente (ex: <em>Bionaut Labs</em>) que navegam pelo líquor ou vasos sanguíneos para destruir tumores cerebrais ou realizar microcirurgias locais, transpondo a barreira hematoencefálica.</p>
+                    </div>
+
+                    <!-- Gêmeos Digitais -->
+                    <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl hover:border-emerald-500 transition-all border-t-4 border-t-emerald-500">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-emerald-500/20 rounded-lg text-emerald-400"><i class="ph-fill ph-users-three text-2xl"></i></div>
+                            <h4 class="font-bold text-lg leading-tight">Gêmeos Digitais & <br> In-Silico Trials</h4>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">Avanço dos <em>Digital Twins</em> (réplicas virtuais do paciente). A FDA e a indústria preparam ensaios clínicos <em>in-silico</em>, onde o grupo de controle (placebo) começa a ser substituído por pacientes virtuais simulados por IA.</p>
+                    </div>
+
+                    <!-- Fraunhofer TEF-Health -->
+                    <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl hover:border-emerald-500 transition-all">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-emerald-500/20 rounded-lg text-emerald-400"><i class="ph-fill ph-check-shield text-2xl"></i></div>
+                            <h4 class="font-bold text-lg leading-tight">Validação TRL 6-8 <br>(TEF-Health)</h4>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">O gargalo é o compliance. Iniciativa alemã certifica robótica assistencial no mundo real, provando a segurança jurídica e operacional da automação autônoma.</p>
+                    </div>
+
+                    <!-- EV Radar: Ciber-Biossegurança -->
+                    <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl hover:border-emerald-500 transition-all">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-emerald-500/20 rounded-lg text-emerald-400"><i class="ph-fill ph-fingerprint text-2xl"></i></div>
+                            <h4 class="font-bold text-lg leading-tight">Ciber-Biossegurança <br>& Autenticação</h4>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">Com o risco do roubo de "Gêmeos Digitais", o EV/RADAR alerta para biometria cognitiva (Brainwave) para proteger hospitais contra hackers e <em>Adversarial ML</em>.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-slate-700 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-xs text-slate-300 mb-1 leading-relaxed"><strong>Legenda Técnica (Micro/Nano-robótica):</strong> São dispositivos dimensionados em micrômetros acionados por campos magnéticos externos, acústica ou reações químicas, permitindo "cirurgias sem incisão".</p>
+                    </div>
+                    <div class="space-y-2 md:text-right flex flex-col md:items-end justify-center">
+                        <p class="text-xs text-slate-400 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-emerald-400"></i> <strong>Fontes:</strong> FDA Science Board / Bionaut Labs / EV-RADAR 6.0.</p>
+                        <p class="text-xs text-slate-400 flex items-center gap-1.5"><i class="ph ph-calendar-blank shrink-0 text-emerald-400"></i> <strong>Período:</strong> Avanços regulatórios e ensaios (2025-2027).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCO 5: Resiliência Sanitária (Brasil / Fiocruz) -->
+        <section class="fade-in bg-gradient-to-br from-green-900 to-green-950 text-white rounded-3xl p-6 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 md:p-8 opacity-10 pointer-events-none">
+                <i class="ph-fill ph-leaf text-8xl md:text-9xl"></i>
+            </div>
+            <div class="relative z-10">
+                <span class="text-green-400 font-bold tracking-widest text-sm uppercase mb-2 block">O Eixo Brasileiro de Resiliência</span>
+                <h2 class="text-2xl md:text-4xl font-bold mb-6 pr-12">Saúde Pública, Clima e a Visão Fiocruz</h2>
+                
+                <!-- Introdução -->
+                <div class="text-sm text-green-50 bg-green-950/60 backdrop-blur-sm p-5 rounded-xl border border-green-500/30 mb-8 shadow-lg">
+                    <strong class="text-green-400 flex items-center gap-2 mb-2"><i class="ph-fill ph-lightbulb text-lg text-green-400"></i> Introdução</strong>
+                    "Resiliência Sanitária" significa a capacidade de um país se manter firme durante uma crise de saúde. A pandemia provou que o Brasil não pode depender da importação de máscaras, respiradores ou vacinas em momentos críticos. A grande tendência estratégica (liderada por polos como a Fiocruz) é dominar a produção local de tecnologias vacinais e realizar a vigilância genômica das florestas, mapeando novas doenças que surgem devido às mudanças climáticas antes que elas se tornem pandemias.
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                    <div class="space-y-6">
+                        <div class="bg-green-800/50 p-5 rounded-xl border border-green-700 backdrop-blur-sm">
+                            <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="ph-fill ph-shield-plus text-green-400"></i> Portfólio de Inovação Prática
+                            </h4>
+                            <p class="text-sm text-green-100">
+                                A Fiocruz traduz tecnologias massivas para a realidade territorial: desde biossensores rápidos para Doença de Chagas, kits moleculares, até a estrutura de vacinas de Bio-Manguinhos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-gray-800/80 p-5 rounded-xl border border-gray-700 hover:border-green-500 transition-colors">
+                            <h5 class="font-bold text-white mb-1 flex items-center"><i class="ph-fill ph-drop text-green-400 mr-2 text-xl"></i>A "Doença X" e Vacinas</h5>
+                            <p class="text-sm text-gray-400">A pandemia consolidou a necessidade de antecipar a próxima ameaça (Doença X). Desenvolvimento de plataformas mRNA de ação rápida e vacinas intranasais de mucosa que cortam a transmissão.</p>
+                        </div>
+                        <div class="bg-gray-800/80 p-5 rounded-xl border border-gray-700 hover:border-green-500 transition-colors">
+                            <h5 class="font-bold text-white mb-1 flex items-center"><i class="ph-fill ph-thermometer text-green-400 mr-2 text-xl"></i>Clima e Epidemiologia</h5>
+                            <p class="text-sm text-gray-400">Preparação estrutural para a mudança no padrão epidemiológico (ex: proliferação de vetores tropicais e zoonoses) puxada brutalmente pelo aquecimento global.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative z-10 mt-8 pt-5 border-t border-green-800/50 space-y-3 bg-green-950/40 p-5 rounded-xl border border-green-900/50">
+                <p class="text-xs text-green-100 leading-relaxed"><strong>Nota Didática (Resiliência Sanitária):</strong> É a capacidade ativa de um sistema de saúde de absorver choques pandêmicos/climáticos e se adaptar rapidamente. Baseia-se em manter a soberania tecnológica em insumos críticos (vacinas, testes e IFAs - Insumo Farmacêutico Ativo).</p>
+                <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-8 pt-2 border-t border-green-800/30">
+                    <p class="text-xs text-green-300 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-green-400"></i> <strong>Fontes:</strong> Visão Fiocruz (Dra. Margareth Dalcolmo) e Bio-Manguinhos.</p>
+                    <p class="text-xs text-green-300 flex items-center gap-1.5"><i class="ph ph-calendar-blank shrink-0 text-green-400"></i> <strong>Período Base:</strong> Diretrizes públicas, ensaios de vigilância (2025-2026).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCO 6: A Fronteira Farmacêutica e Biotecnológica -->
+        <section class="fade-in bg-amber-50 rounded-3xl p-6 md:p-12 border border-amber-200">
+            <div class="mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3 flex items-center gap-3 text-amber-900">
+                    <i class="ph ph-pill text-amber-600"></i> 6. A Nova Fronteira Farmacêutica e Biotecnológica
+                </h2>
+                
+                <!-- Introdução -->
+                <div class="text-sm text-amber-900 bg-amber-100/60 p-5 rounded-xl border border-amber-300 max-w-4xl shadow-sm mt-4">
+                    <strong class="text-amber-900 flex items-center gap-2 mb-2"><i class="ph-fill ph-lightbulb text-lg text-amber-600"></i> Introdução</strong>
+                    A indústria farmacêutica atingiu um ponto de inflexão histórico. O próximo passo não é apenas descobrir novas curas, mas <strong>como entregá-las</strong>. Vemos a corrida para transformar drogas injetáveis altamente eficientes (como o Mounjaro) em simples <strong>comprimidos orais</strong>. No Brasil, o destaque vai além das grandes corporações: a academia brasileira desponta no mundo desenvolvendo vacinas terapêuticas para tratar vícios crônicos, como a dependência química.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Global Trends: Oral GLP-1/GIP -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-amber-100 flex flex-col justify-between hover:border-amber-400 transition-colors border-t-4 border-t-amber-500">
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-amber-900 flex items-center gap-2"><i class="ph-fill ph-flask text-amber-500 text-xl"></i> A Quebra da Agulha: <br>Mounjaro em Comprimidos</h4>
+                        <ul class="text-sm text-gray-700 space-y-4 mb-4">
+                            <li>
+                                <strong class="block text-gray-900">O Desafio Oral:</strong> Transformar moléculas peptídicas complexas (injetáveis) em pílulas que resistam aos ácidos estomacais.
+                            </li>
+                            <li>
+                                <strong class="block text-gray-900">Tirzepatida & Orforglipron:</strong> A Eli Lilly investe massivamente em versões orais do GLP-1/GIP (Mounjaro). O objetivo é massificar o tratamento metabólico e de obesidade, quebrando a barreira da adesão do paciente ao uso de injeções semanais.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-amber-600"></i> <strong>Fonte:</strong> Ensaios Clínicos Eli Lilly / Pipeline Inovação.</p>
+                    </div>
+                </div>
+
+                <!-- Brazil Trends: Calixcoca -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-amber-100 flex flex-col justify-between hover:border-amber-400 transition-colors border-t-4 border-t-amber-500">
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-amber-900 flex items-center gap-2"><i class="ph-fill ph-syringe text-amber-500 text-xl"></i> Inovação Nacional: <br>A Vacina contra o Crack</h4>
+                        <ul class="text-sm text-gray-700 space-y-4 mb-4">
+                            <li>
+                                <strong class="block text-gray-900">Projeto Calixcoca (UFMG):</strong> Uma vacina <em>terapêutica</em> revolucionária, desenvolvida 100% no Brasil, voltada para o tratamento da dependência em cocaína e crack.
+                            </li>
+                            <li>
+                                <strong class="block text-gray-900">Mecanismo de Ação:</strong> A vacina induz a produção de anticorpos que se ligam à droga no sangue. Essa molécula fica grande demais para atravessar a barreira do cérebro, impedindo a "euforia" e cortando a dependência.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-amber-600"></i> <strong>Fonte:</strong> Universidade Federal de Minas Gerais (UFMG).</p>
+                    </div>
+                </div>
+
+                <!-- Autonomia & Biossimilares -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-amber-100 flex flex-col justify-between hover:border-amber-400 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-amber-900 flex items-center gap-2"><i class="ph-fill ph-map-pin-line text-amber-500 text-xl"></i> Biossimilares e <br>Autonomia Nacional</h4>
+                        <ul class="text-sm text-gray-700 space-y-4 mb-4">
+                            <li>
+                                <strong class="block text-gray-900">Protagonistas (Bionovis):</strong> Joint-Venture histórica unindo as gigantes Aché, EMS, Hypera e Eurofarma.
+                            </li>
+                            <li>
+                                <strong class="block text-gray-900">Movimento Estratégico:</strong> Internalizar a produção de anticorpos monoclonais e <em>Biossimilares</em> no Brasil, reduzindo o custo bilionário de importação para o SUS via Parcerias para Desenvolvimento Produtivo (PDPs).
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-book-open shrink-0 text-amber-600"></i> <strong>Fonte:</strong> Ministério da Saúde (PDPs) / CEIS.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCLUSÃO ESTRATÉGICA -->
+        <section class="fade-in bg-gray-50 border-t-8 border-gray-900 p-6 md:p-12 mt-12 rounded-b-3xl">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">Conclusão: O Portfolio de Inovações Quentes</h2>
+            <p class="text-gray-600 text-center max-w-4xl mx-auto mb-10 text-sm md:text-base px-2">
+                O setor converge para uma intersecção crítica. Quem olhar só para IA, verá pouco; quem olhar só para fármacos, chegará tarde. A grande jogada reside na fusão dos seguintes pilares fundamentais (já tangíveis em casos práticos e plataformas reais no mercado):
+            </p>
+
+            <!-- Grid de Casos Práticos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 mb-12">
+                
+                <!-- Card 1 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-gray-400 transition-colors flex flex-col">
+                    <div class="mb-3"><span class="tag-pill bg-gray-200 text-gray-800 border border-gray-300">Ambient AI Clínico</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> <em>DAX Copilot</em> e <em>Abridge</em>. Soluções que transcrevem e estruturam o prontuário médico em tempo real escutando a consulta.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> Microsoft / Cleveland Clinic.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-rose-400 transition-colors flex flex-col">
+                    <div class="mb-3"><span class="tag-pill bg-rose-100 text-rose-800 border border-rose-200">ADCs Oncológicos</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> <em>Padcev</em> e <em>Enhertu</em>. A aquisição bilionária da Seagen pela Pfizer foi motivada para dominar essas plataformas.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> Pfizer / FDA Approvals.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-teal-400 transition-colors flex flex-col">
+                    <div class="mb-3"><span class="tag-pill bg-teal-100 text-teal-800 border border-teal-200">RPM Wearables</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> Biossensores <em>Dexcom G7</em> e Apple Watch, integrados a algoritmos preditivos que alertam médicos antes de crises agudas.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> FDA Digital Health Center.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Digital Twins -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-blue-400 transition-colors flex flex-col">
+                    <div class="mb-3"><span class="tag-pill bg-blue-100 text-blue-800 border border-blue-200">Gêmeos Digitais</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> Simulações in-silico <em>Living Heart Project</em> (Dassault Systèmes) e o avanço da FDA para grupos de controle virtuais em ensaios.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> Dassault Systèmes / FDA.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-orange-400 transition-colors flex flex-col">
+                    <div class="mb-3"><span class="tag-pill bg-orange-100 text-orange-800 border border-orange-200">Gene & Cell Therapy</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> <em>Casgevy</em> (Vertex/CRISPR Therapeutics). Primeira terapia baseada em edição genética CRISPR aprovada comercialmente.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> FDA / Vertex Pharmaceuticals.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Microrrobôs -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-slate-400 transition-colors flex flex-col">
+                    <div class="mb-3"><span class="tag-pill bg-slate-200 text-slate-800 border border-slate-300">Nanorrobótica</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> Microrrobôs magnéticos da <em>Bionaut Labs</em>, desenhados para atravessar a barreira hematoencefálica e atacar tumores.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> Bionaut Labs.</p>
+                    </div>
+                </div>
+
+                <!-- Card 7: Calixcoca / Vacinas Terapêuticas -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-green-400 transition-colors flex flex-col">
+                    <div class="mb-3"><span class="tag-pill bg-green-100 text-green-800 border border-green-200">Vacinas Terapêuticas</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> Projeto <em>Calixcoca</em> (UFMG). Inovação acadêmica brasileira para bloquear os efeitos da cocaína e crack.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> UFMG / Prêmio Euro.</p>
+                    </div>
+                </div>
+
+                <!-- Card 8: GLP-1 Oral -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-amber-400 transition-colors flex flex-col">
+                    <div class="mb-3"><span class="tag-pill bg-amber-100 text-amber-800 border border-amber-200">GLP-1/GIP Oral</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> Transição dos tratamentos de obesidade (<em>Mounjaro/Tirzepatida</em>) de injeções para pílulas diárias (ex: <em>Orforglipron</em>).
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> Eli Lilly Clinical Pipeline.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 9 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-purple-400 transition-colors flex flex-col lg:col-span-1 xl:col-span-2">
+                    <div class="mb-3"><span class="tag-pill bg-purple-100 text-purple-800 border border-purple-200">Data Spaces</span></div>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-grow">
+                        <strong>Exemplo:</strong> <em>European Health Data Space (EHDS)</em> e no Brasil, a <em>Rede Nacional de Dados em Saúde (RNDS)</em> unificando o SUS.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <p class="text-[11px] text-gray-500 flex items-center gap-1.5"><i class="ph ph-link shrink-0"></i> <strong>Fonte:</strong> Comissão Europeia / Datasus.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Resumo Final Macro -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center border-t border-gray-200 pt-10">
+                <div class="p-3">
+                    <i class="ph ph-dna text-3xl text-gray-400 mb-2"></i>
+                    <h5 class="font-bold text-gray-900 mb-1 text-sm md:text-base">Biotecnologia</h5>
+                    <p class="text-xs text-gray-500">(Pfizer, Vertex, UFMG)</p>
+                </div>
+                <div class="p-3">
+                    <i class="ph ph-chart-scatter text-3xl text-gray-400 mb-2"></i>
+                    <h5 class="font-bold text-gray-900 mb-1 text-sm md:text-base">Dados Funcionais</h5>
+                    <p class="text-xs text-gray-500">(Cleveland, Gêmeos Digitais)</p>
+                </div>
+                <div class="p-3">
+                    <i class="ph ph-robot text-3xl text-gray-400 mb-2"></i>
+                    <h5 class="font-bold text-gray-900 mb-1 text-sm md:text-base">Automação Segura</h5>
+                    <p class="text-xs text-gray-500">(NVIDIA, Intuitive Surgical)</p>
+                </div>
+                <div class="p-3">
+                    <i class="ph ph-shield-check text-3xl text-gray-400 mb-2"></i>
+                    <h5 class="font-bold text-gray-900 mb-1 text-sm md:text-base">Resiliência Nacional</h5>
+                    <p class="text-xs text-gray-500">(Fiocruz, RNDS, Bionovis)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center pb-12 text-gray-400 text-sm mt-12 border-t border-gray-100 pt-8">
+            <p>Infográfico consolidado de Foresight Estratégico (Inovação, Patentes e Políticas de Saúde).</p>
+            <p class="mt-2 text-xs">Desenvolvido para compatibilidade total em plataformas estáticas (GitHub Pages/Vercel).</p>
+            <p class="mt-1 text-xs">Atualização Base: <strong>Abril de 2026</strong>.</p>
+        </footer>
+
+    </main>
+
+    <!-- Lógica JavaScript e Chart.js -->
+    <script>
+        // Previne a tela branca: Se o JS estiver rodando, ele adiciona a classe js-loaded
+        // Isso ativa as animações de fade-in com opacidade 0 inicial
+        document.body.classList.add('js-loaded');
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Observer para animação Fade-in
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(element => { observer.observe(element); });
+
+            // Chart.js Plugin Configuration (Evita erros se o Chart não carregar)
+            if (typeof Chart !== 'undefined') {
+                const centerTextPlugin = {
+                    id: 'centerText',
+                    beforeDraw: function(chart) {
+                        if (chart.config.type !== 'doughnut') return;
+                        const ctx = chart.ctx;
+                        const width = chart.width;
+                        const height = chart.height;
+                        
+                        ctx.restore();
+                        const fontSize = (width / 200).toFixed(2);
+                        
+                        ctx.font = `bold ${fontSize}em "Helvetica Neue", Helvetica, Arial, sans-serif`;
+                        ctx.textBaseline = "middle";
+                        ctx.fillStyle = "#111827";
+                        
+                        const text1 = "+3.200";
+                        const text1X = Math.round((width - ctx.measureText(text1).width) / 2);
+                        const text1Y = height / 2.1;
+                        ctx.fillText(text1, text1X, text1Y);
+                        
+                        ctx.font = `normal ${fontSize / 2.2}em "Helvetica Neue", Helvetica, Arial, sans-serif`;
+                        ctx.fillStyle = "#6b7280";
+                        
+                        const text2 = "Ensaios Ativos";
+                        const text2X = Math.round((width - ctx.measureText(text2).width) / 2);
+                        const text2Y = text1Y + (width * 0.08); 
+                        ctx.fillText(text2, text2X, text2Y);
+                        
+                        ctx.save();
+                    }
+                };
+                Chart.register(centerTextPlugin);
+
+                Chart.defaults.font.family = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+                Chart.defaults.color = '#4b5563';
+
+                const ctxTherapies = document.getElementById('therapiesChart');
+                if (ctxTherapies) {
+                    new Chart(ctxTherapies.getContext('2d'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Terapia Celular', 'Terapia Gênica', 'Terapia de RNA/mRNA'],
+                            datasets: [{
+                                data: [1500, 950, 750], 
+                                backgroundColor: ['#e11d48', '#fb7185', '#ffe4e6'],
+                                borderWidth: 2,
+                                borderColor: '#ffffff',
+                                hoverOffset: 8
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '70%',
+                            layout: { padding: 10 },
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        padding: 15,
+                                        font: { size: 11 },
+                                        usePointStyle: true,
+                                        pointStyle: 'circle'
+                                    }
+                                },
+                                tooltip: {
+                                    backgroundColor: 'rgba(17, 24, 39, 0.9)',
+                                    titleFont: { size: 13 },
+                                    bodyFont: { size: 13 },
+                                    padding: 12,
+                                    cornerRadius: 8,
+                                    callbacks: {
+                                        label: function(context) {
+                                            const total = 3200;
+                                            const percentage = Math.round((context.raw / total) * 100);
+                                            return ` ${context.label}: ~${context.raw} Ensaios (${percentage}%)`;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
